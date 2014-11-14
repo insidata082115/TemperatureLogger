@@ -20,10 +20,6 @@
 		406CCC3B19F044A7007C0217 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406CCC3A19F044A7007C0217 /* MainTableViewController.m */; };
 		406CCC3E19F05A05007C0217 /* ScanTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406CCC3D19F05A05007C0217 /* ScanTableViewController.m */; };
 		406CCC4C19F09DB6007C0217 /* LogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406CCC4B19F09DB6007C0217 /* LogViewController.m */; };
-		40F8001F19F5B436000031CB /* ALBatteryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F8001819F5B436000031CB /* ALBatteryView.m */; };
-		40F8002019F5B436000031CB /* battery.png in Resources */ = {isa = PBXBuildFile; fileRef = 40F8001A19F5B436000031CB /* battery.png */; };
-		40F8002119F5B436000031CB /* battery@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40F8001B19F5B436000031CB /* battery@2x.png */; };
-		40F8002219F5B436000031CB /* UIView+ALQuickFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F8001E19F5B436000031CB /* UIView+ALQuickFrame.m */; };
 		D06E99651A0B35D3002B3672 /* JBChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D06E99601A0B35D3002B3672 /* JBChartInformationView.m */; };
 		D06E99671A0B35D3002B3672 /* JBChartTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = D06E99641A0B35D3002B3672 /* JBChartTooltipView.m */; };
 		D06E996A1A0B39B3002B3672 /* JBBarChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D06E99691A0B39B3002B3672 /* JBBarChartFooterView.m */; };
@@ -74,12 +70,6 @@
 		406CCC3D19F05A05007C0217 /* ScanTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanTableViewController.m; sourceTree = "<group>"; };
 		406CCC4A19F09DB6007C0217 /* LogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogViewController.h; sourceTree = "<group>"; };
 		406CCC4B19F09DB6007C0217 /* LogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogViewController.m; sourceTree = "<group>"; };
-		40F8001719F5B436000031CB /* ALBatteryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALBatteryView.h; sourceTree = "<group>"; };
-		40F8001819F5B436000031CB /* ALBatteryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALBatteryView.m; sourceTree = "<group>"; };
-		40F8001A19F5B436000031CB /* battery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = battery.png; sourceTree = "<group>"; };
-		40F8001B19F5B436000031CB /* battery@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "battery@2x.png"; sourceTree = "<group>"; };
-		40F8001D19F5B436000031CB /* UIView+ALQuickFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ALQuickFrame.h"; sourceTree = "<group>"; };
-		40F8001E19F5B436000031CB /* UIView+ALQuickFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ALQuickFrame.m"; sourceTree = "<group>"; };
 		D06E994A1A0AEE3C002B3672 /* ColorConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConstants.h; sourceTree = "<group>"; };
 		D06E994B1A0AF008002B3672 /* TempLoggerPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TempLoggerPrefixHeader.pch; sourceTree = "<group>"; };
 		D06E994C1A0AF65F002B3672 /* FontConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FontConstants.h; sourceTree = "<group>"; };
@@ -130,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				40F8002619F5B762000031CB /* MBProgressHUD */,
-				40F8001619F5B436000031CB /* ALBatteryView */,
 				406CCC4D19F0AE55007C0217 /* JBChartView */,
 				406CCC0619EF73E5007C0217 /* TempLogger */,
 				406CCC2019EF73E5007C0217 /* TempLoggerTests */,
@@ -239,35 +228,6 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		40F8001619F5B436000031CB /* ALBatteryView */ = {
-			isa = PBXGroup;
-			children = (
-				40F8001719F5B436000031CB /* ALBatteryView.h */,
-				40F8001819F5B436000031CB /* ALBatteryView.m */,
-				40F8001919F5B436000031CB /* Resources */,
-				40F8001C19F5B436000031CB /* UIView+ALQuickFrame */,
-			);
-			path = ALBatteryView;
-			sourceTree = "<group>";
-		};
-		40F8001919F5B436000031CB /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				40F8001A19F5B436000031CB /* battery.png */,
-				40F8001B19F5B436000031CB /* battery@2x.png */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		40F8001C19F5B436000031CB /* UIView+ALQuickFrame */ = {
-			isa = PBXGroup;
-			children = (
-				40F8001D19F5B436000031CB /* UIView+ALQuickFrame.h */,
-				40F8001E19F5B436000031CB /* UIView+ALQuickFrame.m */,
-			);
-			path = "UIView+ALQuickFrame";
-			sourceTree = "<group>";
-		};
 		40F8002619F5B762000031CB /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,8 +319,6 @@
 			files = (
 				D079C4231A159843001D6DDE /* logger-background.png in Resources */,
 				406CCC1319EF73E5007C0217 /* Main.storyboard in Resources */,
-				40F8002019F5B436000031CB /* battery.png in Resources */,
-				40F8002119F5B436000031CB /* battery@2x.png in Resources */,
 				D06E997D1A0B597E002B3672 /* icon-arrow.png in Resources */,
 				406CCC1519EF73E5007C0217 /* Images.xcassets in Resources */,
 				D06E997E1A0B597E002B3672 /* icon-arrow@2x.png in Resources */,
@@ -381,11 +339,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40F8001F19F5B436000031CB /* ALBatteryView.m in Sources */,
 				405F000319F5FD9400FAEAFC /* MBProgressHUD.m in Sources */,
 				406CCC3B19F044A7007C0217 /* MainTableViewController.m in Sources */,
 				405F000B19F5FDCB00FAEAFC /* JBChartView.m in Sources */,
-				40F8002219F5B436000031CB /* UIView+ALQuickFrame.m in Sources */,
 				D07BA17C1A0AD89F00C6CB14 /* BaseNavViewController.m in Sources */,
 				406CCC3E19F05A05007C0217 /* ScanTableViewController.m in Sources */,
 				406CCC0D19EF73E5007C0217 /* AppDelegate.m in Sources */,

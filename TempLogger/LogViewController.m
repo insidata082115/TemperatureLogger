@@ -13,14 +13,12 @@
 #import "JBChartHeaderView.h"
 #import "JBChartInformationView.h"
 
-#import "ALBatteryView.h"
 #import "MBProgressHUD.h"
 
 @interface LogViewController () <JBBarChartViewDataSource, JBBarChartViewDelegate>
 
 @property (nonatomic, strong) JBBarChartView *barChartView;
 @property (nonatomic, strong) JBChartInformationView *informationView;
-@property (weak, nonatomic) ALBatteryView *batteryView;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UILabel *identifierLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
@@ -96,10 +94,6 @@ NSInteger const BarChartViewControllerMinBarHeight = 0;
     [self readLog];
     
     [self.barChartView reloadData];
-    
-    ALBatteryView *batteryView = [[ALBatteryView alloc] initWithFrame:CGRectMake(320, 72, 40, 40)];
-    [self.view addSubview:batteryView];
-    self.batteryView = batteryView;
 }
 
 - (void)readLog
@@ -177,10 +171,6 @@ NSInteger const BarChartViewControllerMinBarHeight = 0;
         self.progressBar.hidden = NO;
         self.progressBar.progress = 0;
         self.statusLabel.text = @"Syncing...";
-        
-        [self.device readBatteryLifeWithHandler:^(NSNumber *number, NSError *error) {
-            [self.batteryView setBatteryLevelWithAnimation:YES forValue:number.floatValue inPercent:YES];
-        }];
         
         [self.device.temperature.dataReadyEvent downloadLogAndStopLogging:NO handler:^(NSArray *array, NSError *error) {
             if (error) {
