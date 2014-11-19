@@ -70,6 +70,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <segue destination="Wgh-oQ-3BA" kind="push" identifier="ViewLog" id="Zj1-Pd-qrr"/>
                     </connections>
