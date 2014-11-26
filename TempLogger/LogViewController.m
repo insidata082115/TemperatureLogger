@@ -267,15 +267,12 @@ NSInteger const BarChartViewControllerMinBarHeight = 0;
     NSNumber *valueNumber = [self.chartData objectAtIndex:index];
     [self.informationView setValueText:[NSString stringWithFormat:StringLabelDegreesFahrenheit, [valueNumber intValue], StringLabelDegreeSymbol] unitText:nil];
     [self.informationView setHidden:NO animated:YES];
-    [self setTooltipVisible:YES animated:YES atTouchPoint:touchPoint];
-    //[self.tooltipView setText:@"temp";
     
 }
 
 - (void)didDeselectBarChartView:(JBBarChartView *)barChartView
 {
     [self.informationView setHidden:YES animated:YES];
-    [self setTooltipVisible:NO animated:YES];
 }
 
 #pragma mark - JBBarChartViewDelegate
