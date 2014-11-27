@@ -48,17 +48,17 @@ typedef enum {
 } MBLAnalogReadMode;
 
 typedef enum {
-    MBLPinChangeModeRising = 1,
-    MBLPinChangeModeFalling = 2,
-    MBLPinChangeModeAny = 3
-} MBLPinChangeMode;
+    MBLPinChangeTypeRising = 1,
+    MBLPinChangeTypeFalling = 2,
+    MBLPinChangeTypeAny = 3
+} MBLPinChangeType;
 
 @interface MBLGPIOPin : NSObject
 
 /**
  Set what pin state transitions trigger a changeEvent.
  */
-@property (nonatomic) MBLPinChangeMode changeType;
+@property (nonatomic) MBLPinChangeType changeType;
 
 
 /**

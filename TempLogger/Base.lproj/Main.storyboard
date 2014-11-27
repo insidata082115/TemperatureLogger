@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KDi-PA-Jbe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KDi-PA-Jbe">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--MetaTemp-->
@@ -159,32 +162,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MetaWear" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0f-Rr-9wo">
-                                <rect key="frame" x="74" y="73" width="95" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MetaWear" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0f-Rr-9wo">
+                                <rect key="frame" x="74" y="80" width="91" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MetaWear" translatesAutoresizingMaskIntoConstraints="NO" id="3da-us-aoO">
-                                <rect key="frame" x="16" y="72" width="50" height="50"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MetaWear" translatesAutoresizingMaskIntoConstraints="NO" id="3da-us-aoO">
+                                <rect key="frame" x="16" y="80" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3da-us-aoO" secondAttribute="height" multiplier="1:1" id="efn-53-yVt"/>
+                                    <constraint firstAttribute="height" constant="50" id="i2K-9S-n2k"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Device is Logging..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3P-NI-4QA">
-                                <rect key="frame" x="74" y="97" width="310" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device is Logging..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3P-NI-4QA">
+                                <rect key="frame" x="74" y="107" width="230" height="18"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-ThinItalic" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="326A9000-85CB-9195-D9DD-464CFBBAE75A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVm-nV-69L">
-                                <rect key="frame" x="16" y="130" width="368" height="15"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="11"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fZF-fO-dj7">
-                                <rect key="frame" x="16" y="125" width="368" height="2"/>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fZF-fO-dj7">
+                                <rect key="frame" x="16" y="133" width="288" height="2"/>
                             </progressView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KST-Zp-ZHR">
-                                <rect key="frame" x="16" y="523" width="68" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KST-Zp-ZHR">
+                                <rect key="frame" x="16" y="523" width="65" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Clear Log">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -193,20 +194,20 @@
                                     <action selector="clearLogPressed:" destination="Wgh-oQ-3BA" eventType="touchUpInside" id="d0K-co-6pk"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Jij-1J-hD5">
-                                <rect key="frame" x="255" y="70" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Jij-1J-hD5">
+                                <rect key="frame" x="255" y="78" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchChanged:" destination="Wgh-oQ-3BA" eventType="valueChanged" id="u4y-fh-MpV"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Demo:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTi-YZ-0mS">
-                                <rect key="frame" x="208" y="69" width="46" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demo:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTi-YZ-0mS">
+                                <rect key="frame" x="207" y="83" width="43" height="18"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-ThinItalic" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44w-SI-pAH">
-                                <rect key="frame" x="208" y="523" width="92" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44w-SI-pAH">
+                                <rect key="frame" x="211" y="523" width="89" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Reset Device">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -215,8 +216,55 @@
                                     <action selector="resetDevicePressed:" destination="Wgh-oQ-3BA" eventType="touchUpInside" id="Un1-8X-ZPW"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzl-cQ-u9d" customClass="JBChartInformationView">
+                                <rect key="frame" x="0.0" y="404" width="320" height="99"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="95" id="tXZ-TY-3BT"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ILM-7I-D5B" customClass="JBBarChartView">
+                                <rect key="frame" x="10" y="226" width="300" height="188"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Frg-NU-wGO" customClass="JBChartHeaderView">
+                                <rect key="frame" x="10" y="143" width="300" height="83"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.12035031628162816" green="0.11975155848918224" blue="0.12094907407407407" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Jzl-cQ-u9d" firstAttribute="leading" secondItem="o1B-vV-7Om" secondAttribute="leadingMargin" constant="-16" id="0To-Cf-fqB"/>
+                            <constraint firstItem="fZF-fO-dj7" firstAttribute="leading" secondItem="o1B-vV-7Om" secondAttribute="leadingMargin" id="0eF-e6-WRc"/>
+                            <constraint firstItem="4pr-g9-byO" firstAttribute="top" secondItem="KST-Zp-ZHR" secondAttribute="bottom" constant="15" id="5Fj-sN-UAz"/>
+                            <constraint firstItem="KST-Zp-ZHR" firstAttribute="top" secondItem="Jzl-cQ-u9d" secondAttribute="bottom" constant="20" id="5bH-Ym-qkF"/>
+                            <constraint firstItem="g0f-Rr-9wo" firstAttribute="top" secondItem="3da-us-aoO" secondAttribute="top" id="93X-Sp-9dM"/>
+                            <constraint firstItem="ILM-7I-D5B" firstAttribute="height" secondItem="Frg-NU-wGO" secondAttribute="height" multiplier="2.25:1" id="9xi-Mm-QUP"/>
+                            <constraint firstItem="s3P-NI-4QA" firstAttribute="top" secondItem="g0f-Rr-9wo" secondAttribute="bottom" constant="3" id="AJT-2r-BZa"/>
+                            <constraint firstItem="Jzl-cQ-u9d" firstAttribute="height" secondItem="ILM-7I-D5B" secondAttribute="height" multiplier="1:1.9" priority="750" id="BFB-zM-fBP"/>
+                            <constraint firstItem="Jij-1J-hD5" firstAttribute="centerY" secondItem="g0f-Rr-9wo" secondAttribute="centerY" constant="1.5" id="D2c-kf-gsy"/>
+                            <constraint firstItem="Jij-1J-hD5" firstAttribute="centerY" secondItem="oTi-YZ-0mS" secondAttribute="centerY" constant="2" id="DCk-Fp-gL7"/>
+                            <constraint firstItem="ILM-7I-D5B" firstAttribute="top" secondItem="Frg-NU-wGO" secondAttribute="bottom" id="Dnc-80-ROE"/>
+                            <constraint firstItem="Jij-1J-hD5" firstAttribute="trailing" secondItem="o1B-vV-7Om" secondAttribute="trailingMargin" id="Ffs-4f-dWO"/>
+                            <constraint firstItem="ILM-7I-D5B" firstAttribute="leading" secondItem="o1B-vV-7Om" secondAttribute="leadingMargin" constant="-6" id="HCA-Sy-bIr"/>
+                            <constraint firstItem="s3P-NI-4QA" firstAttribute="leading" secondItem="3da-us-aoO" secondAttribute="trailing" constant="8" id="Iqh-MC-Sc9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ILM-7I-D5B" secondAttribute="trailing" constant="-6" id="KM0-qB-cGO"/>
+                            <constraint firstItem="s3P-NI-4QA" firstAttribute="trailing" secondItem="o1B-vV-7Om" secondAttribute="trailingMargin" id="Mq9-Kb-d6s"/>
+                            <constraint firstItem="3da-us-aoO" firstAttribute="leading" secondItem="o1B-vV-7Om" secondAttribute="leadingMargin" id="OpH-yq-6G1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jzl-cQ-u9d" secondAttribute="trailing" constant="-16" id="Q4c-aI-fLJ"/>
+                            <constraint firstItem="fZF-fO-dj7" firstAttribute="trailing" secondItem="o1B-vV-7Om" secondAttribute="trailingMargin" id="RWw-Xo-ofz"/>
+                            <constraint firstItem="fZF-fO-dj7" firstAttribute="top" secondItem="3da-us-aoO" secondAttribute="bottom" constant="3" id="S1T-0l-ViF"/>
+                            <constraint firstItem="Frg-NU-wGO" firstAttribute="leading" secondItem="o1B-vV-7Om" secondAttribute="leadingMargin" constant="-6" id="Sgf-tf-Krj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="44w-SI-pAH" secondAttribute="trailing" constant="4" id="Wrq-zE-4bi"/>
+                            <constraint firstItem="Frg-NU-wGO" firstAttribute="top" secondItem="fZF-fO-dj7" secondAttribute="bottom" constant="8" id="aUQ-zS-gJG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Frg-NU-wGO" secondAttribute="trailing" constant="-6" id="b9I-m7-4rM"/>
+                            <constraint firstItem="4pr-g9-byO" firstAttribute="top" secondItem="44w-SI-pAH" secondAttribute="bottom" constant="15" id="ejq-S0-xNt"/>
+                            <constraint firstItem="Jzl-cQ-u9d" firstAttribute="top" secondItem="ILM-7I-D5B" secondAttribute="bottom" constant="-10" id="f7k-tV-nAk"/>
+                            <constraint firstItem="KST-Zp-ZHR" firstAttribute="leading" secondItem="o1B-vV-7Om" secondAttribute="leadingMargin" id="o4t-9O-35L"/>
+                            <constraint firstItem="g0f-Rr-9wo" firstAttribute="leading" secondItem="3da-us-aoO" secondAttribute="trailing" constant="8" id="sQ5-HF-Y9N"/>
+                            <constraint firstItem="Jij-1J-hD5" firstAttribute="leading" secondItem="oTi-YZ-0mS" secondAttribute="trailing" constant="5" id="xp7-2Z-vIr"/>
+                            <constraint firstItem="3da-us-aoO" firstAttribute="top" secondItem="ZLx-4S-bKf" secondAttribute="bottom" constant="16" id="z0E-54-g4c"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Log Data" id="wzF-Pn-iWL">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="mtp-gz-2tM">
@@ -226,8 +274,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="barChartView" destination="ILM-7I-D5B" id="wDA-fY-qtC"/>
                         <outlet property="demoSwitch" destination="Jij-1J-hD5" id="kqj-jK-bWH"/>
-                        <outlet property="identifierLabel" destination="SVm-nV-69L" id="YK7-Ls-dp9"/>
+                        <outlet property="headerView" destination="Frg-NU-wGO" id="rCc-4F-WdB"/>
+                        <outlet property="informationView" destination="Jzl-cQ-u9d" id="qmJ-xg-ME9"/>
                         <outlet property="progressBar" destination="fZF-fO-dj7" id="VgM-cK-Oig"/>
                         <outlet property="statusLabel" destination="s3P-NI-4QA" id="Kvd-Wf-57E"/>
                     </connections>
@@ -239,8 +289,7 @@
         <!--Base Nav View Controller-->
         <scene sceneID="9Us-Up-E9P">
             <objects>
-                <navigationController navigationBarHidden="YES" id="KDi-PA-Jbe" customClass="BaseNavViewController" sceneMemberID="viewController">
-                    <nil key="simulatedStatusBarMetrics"/>
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" navigationBarHidden="YES" id="KDi-PA-Jbe" customClass="BaseNavViewController" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dMr-JT-UHQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -266,11 +315,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logger-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="uAH-66-cqw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoggerBackground" translatesAutoresizingMaskIntoConstraints="NO" id="uAH-66-cqw">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaB-o7-IWY">
+                            <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaB-o7-IWY">
                                 <rect key="frame" x="0.0" y="452" width="320" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ykg-f3-E6s"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Start Logging!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -281,6 +333,15 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="gaB-o7-IWY" secondAttribute="trailing" constant="-16" id="34Z-M6-j33"/>
+                            <constraint firstItem="yDa-iY-osV" firstAttribute="top" secondItem="uAH-66-cqw" secondAttribute="bottom" id="JTG-DK-KyB"/>
+                            <constraint firstItem="gaB-o7-IWY" firstAttribute="leading" secondItem="Ohx-g7-Niq" secondAttribute="leadingMargin" constant="-16" id="Y13-Mc-XPm"/>
+                            <constraint firstItem="uAH-66-cqw" firstAttribute="leading" secondItem="Ohx-g7-Niq" secondAttribute="leadingMargin" constant="-16" id="c5w-q8-DZ2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uAH-66-cqw" secondAttribute="trailing" constant="-16" id="dsu-fM-Vpm"/>
+                            <constraint firstItem="gaB-o7-IWY" firstAttribute="top" secondItem="uAH-66-cqw" secondAttribute="bottom" constant="-116" id="gn7-6X-VcH"/>
+                            <constraint firstItem="uAH-66-cqw" firstAttribute="top" secondItem="ruZ-35-uGc" secondAttribute="bottom" constant="-20" id="h9I-br-4ku"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xHg-te-iYN"/>
                 </viewController>
@@ -290,8 +351,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LoggerBackground" width="320" height="480"/>
         <image name="MetaWear" width="315" height="315"/>
-        <image name="logger-background.png" width="1080" height="1920"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

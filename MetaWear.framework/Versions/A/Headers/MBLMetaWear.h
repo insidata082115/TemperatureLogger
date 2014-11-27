@@ -45,6 +45,7 @@
 @class MBLiBeacon;
 @class MBLNeopixel;
 @class MBLEvent;
+@class MBLANCS;
 
 @interface MBLMetaWear : NSObject <CBPeripheralDelegate>
 
@@ -59,6 +60,7 @@
 @property (nonatomic, strong, readonly) MBLHapticBuzzer *hapticBuzzer;
 @property (nonatomic, strong, readonly) MBLiBeacon *iBeacon;
 @property (nonatomic, strong, readonly) MBLNeopixel *neopixel;
+@property (nonatomic, strong, readonly) MBLANCS *ancs;
 
 /**
  Current connection state of this MetaWear
@@ -106,7 +108,9 @@
 - (void)forgetDevice;
 
 /**
- TODO:
+ Attempt to retrieve an MBLEvent created with the given identifier
+ @see MBLEvent
+ @param NSString identifier, Identifer passed in creation of MBLEvent
  */
 - (MBLEvent *)retrieveEventWithIdentifier:(NSString *)identifier;
 

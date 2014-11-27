@@ -7,6 +7,7 @@
 //
 
 #import "LogViewController.h"
+#import "LogEntry.h"
 
 #import "JBLineChartView.h"
 #import "JBBarChartView.h"
@@ -16,32 +17,21 @@
 #import "MBProgressHUD.h"
 
 @interface LogViewController () <JBBarChartViewDataSource, JBBarChartViewDelegate>
-
-@property (nonatomic, strong) JBBarChartView *barChartView;
-@property (nonatomic, strong) JBChartInformationView *informationView;
+@property (weak, nonatomic) IBOutlet JBChartHeaderView *headerView;
+@property (weak, nonatomic) IBOutlet JBBarChartView *barChartView;
+@property (weak, nonatomic) IBOutlet JBChartInformationView *informationView;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
-@property (weak, nonatomic) IBOutlet UILabel *identifierLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *demoSwitch;
 @property (nonatomic, strong) NSString *logFilename;
 @property (nonatomic, strong) NSMutableArray *logData;
-@property (nonatomic, strong) NSMutableArray *chartData;
-@property (nonatomic, strong) NSMutableArray *timeData;
-
 @end
 
 // Bar chart size and position constants
-CGFloat const BarChartViewControllerChartHeight = 260.0f;
-CGFloat const BarChartViewControllerChartPadding = 10.0f;
-CGFloat const BarChartViewControllerChartHeightPadding = 150.0f;
-CGFloat const BarChartViewControllerChartHeaderHeight = 80.0f;
-CGFloat const BarChartViewControllerChartHeaderPadding = 20.0f;
-CGFloat const BarChartViewControllerChartFooterHeight = 25.0f;
-CGFloat const BarChartViewControllerChartFooterPadding = 5.0f;
-CGFloat const BarChartViewControllerBarPadding = 1.0f;
-NSInteger const BarChartViewControllerNumBars = 30;
-NSInteger const BarChartViewControllerMaxBarHeight = 100;
-NSInteger const BarChartViewControllerMinBarHeight = 0;
+static const CGFloat    BarChartViewControllerBarPadding = 1.0f;
+static const NSInteger  BarChartViewControllerNumBars = 30;
+static const NSInteger  BarChartViewControllerMaxBarHeight = 100;
+static const NSInteger  BarChartViewControllerMinBarHeight = 0;
 
 @implementation LogViewController
 @synthesize logFilename = _logFilename;
@@ -50,11 +40,12 @@ NSInteger const BarChartViewControllerMinBarHeight = 0;
 {
     if (!_logFilename) {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *name = [NSString stringWithFormat:@"%@/logfile.txt", paths[0]];
-        if (![[NSFileManager defaultManager] fileExistsAtPath:name]) {
-            [[NSFileManager defaultManager] createFileAtPath:name contents:nil attributes:nil];
+        if (paths.count) {
+            _logFilename = [NSString stringWithFormat:@"%@/archive_logfile.txt", paths[0]];
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Cannot find documents directory, logging not supported" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+            _logFilename = nil;
         }
-        _logFilename = name;
     }
     return _logFilename;
 }
@@ -64,85 +55,27 @@ NSInteger const BarChartViewControllerMinBarHeight = 0;
     [super viewDidLoad];
 
     self.view.backgroundColor = ColorBarChartBackground;
-    self.identifierLabel.text = self.device.identifier.UUIDString;
     self.statusLabel.text = @"Logging...";
     [self refreshPressed:self];
     
     // Creating bar chart and defining its properties
-    self.barChartView = [[JBBarChartView alloc] init];
-    self.barChartView.frame = CGRectMake(BarChartViewControllerChartPadding, BarChartViewControllerChartHeightPadding, self.view.bounds.size.width - (BarChartViewControllerChartPadding * 2), BarChartViewControllerChartHeight);
     self.barChartView.delegate = self;
     self.barChartView.dataSource = self;
-    self.barChartView.headerPadding = BarChartViewControllerChartHeaderPadding;
     self.barChartView.minimumValue = 0.0f;
     self.barChartView.inverted = NO;
     self.barChartView.backgroundColor = ColorBarChartBackground;
     
     // Setup title and header
-    JBChartHeaderView *headerView = [[JBChartHeaderView alloc] initWithFrame:CGRectMake(BarChartViewControllerChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(BarChartViewControllerChartHeaderHeight * 0.5), self.view.bounds.size.width - (BarChartViewControllerChartPadding * 2), BarChartViewControllerChartHeaderHeight)];
-    headerView.titleLabel.text = @"Temperature";
-    headerView.subtitleLabel.text = @"Last 30 samples";
-    headerView.separatorColor = ColorBarChartHeaderSeparatorColor;
-    self.barChartView.headerView = headerView;
+    self.headerView.titleLabel.text = @"Temperature";
+    self.headerView.subtitleLabel.text = @"Last 30 samples";
+    self.headerView.separatorColor = ColorBarChartHeaderSeparatorColor;
     
-    // Setup view used to display temperature upon selection
-    self.informationView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.barChartView.frame), self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(self.barChartView.frame) - CGRectGetMaxY(self.navigationController.navigationBar.frame))];
-    
-    [self.view addSubview:self.informationView];
-    [self.view addSubview:self.barChartView];
-    
-    [self readLog];
-    
+    // Load saved values and display
+    self.logData = [[NSKeyedUnarchiver unarchiveObjectWithFile:self.logFilename] mutableCopy];
+    if (!self.logData) {
+        self.logData = [NSMutableArray arrayWithCapacity:BarChartViewControllerNumBars];
+    }
     [self.barChartView reloadData];
-}
-
-- (void)readLog
-{
-    // Read the log file that already exists and parse it into array format so we can add to it later
-    NSString *file = [NSString stringWithContentsOfFile:self.logFilename encoding:NSUTF8StringEncoding error:nil];
-    self.logData = [[file componentsSeparatedByString:@"\n"] mutableCopy];
-    if ([[self.logData lastObject] isEqualToString:@""]) {
-        [self.logData removeLastObject];
-    }
-    
-    // If there are not enough samples, then add zeros to the array until there are enough samples and give a warning message.
-    if (self.logData.count < BarChartViewControllerNumBars) {
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Not enough samples, chart data will be limited." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
-        int x = (BarChartViewControllerNumBars-(int)self.logData.count);
-        for (int i = 0; i < x; i++){
-            [self.logData insertObject:@"0,0" atIndex:0];
-        }
-    }
-    
-    // Parse the last BarChartViewControllerNumBars number of entries of the logData array into a data and time array since the Bar Chart expects separate arrays with only 1 dimension.
-    
-    self.chartData = [[NSMutableArray alloc] init];
-    self.timeData = [[NSMutableArray alloc] init];
-    
-    for (int i = ((int)self.logData.count-BarChartViewControllerNumBars); i < self.logData.count; i++)
-    {
-        NSString *line = self.logData[i];
-        NSArray *csv =[line componentsSeparatedByString:@","];
-        NSString *time = [csv[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        NSString *data = [csv[1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        [self.chartData addObject:data];
-        [self.timeData addObject:time];
-    }
-}
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)initFakeData
-{
-    NSMutableArray *mutableChartData = [NSMutableArray array];
-    for (int i=0; i<BarChartViewControllerNumBars; i++)
-    {
-        [mutableChartData addObject:[NSNumber numberWithFloat:MAX((BarChartViewControllerMinBarHeight), arc4random() % (BarChartViewControllerMaxBarHeight))]];
-        
-    }
-    _chartData = mutableChartData;
 }
 
 - (IBAction)refreshPressed:(id)sender
@@ -151,7 +84,7 @@ NSInteger const BarChartViewControllerMinBarHeight = 0;
         return;
     }
     
-    if(self.demoSwitch.on) {
+    if (self.demoSwitch.on) {
         return;
     }
     
@@ -161,13 +94,19 @@ NSInteger const BarChartViewControllerMinBarHeight = 0;
             [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Cannot connect to logger, make sure it is charged and within range" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
             return;
         }
+        
+        self.device.temperature.units = MBLTemperatureUnitFahrenheit;
         if (!self.device.temperature.dataReadyEvent.isLogging) {
             self.device.temperature.samplePeriod = 30000;
             self.device.temperature.source = MBLTemperatureSourceInternal;
-            self.device.temperature.thermistorReadPin = 0;
-            self.device.temperature.thermistorEnablePin = 1;
+            // Uncomment the following lines if you are using an external thermistor
+            // as setup here: http://projects.mbientlab.com/metawear-and-thermistor/
+            //self.device.temperature.source = MBLTemperatureSourceThermistor;
+            //self.device.temperature.thermistorReadPin = 0;
+            //self.device.temperature.thermistorEnablePin = 1;
             [self.device.temperature.dataReadyEvent startLogging];
         }
+        
         self.progressBar.hidden = NO;
         self.progressBar.progress = 0;
         self.statusLabel.text = @"Syncing...";
@@ -176,26 +115,15 @@ NSInteger const BarChartViewControllerMinBarHeight = 0;
             if (error) {
                 [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
             } else {
-                NSFileHandle *handle = [NSFileHandle fileHandleForWritingAtPath:self.logFilename];
-                [handle seekToEndOfFile];
                 for (MBLNumericData *temp in array) {
                     NSLog(@"Temp added: %@", temp);
-                    NSString *line = [NSString stringWithFormat:@"%f,%.2f\n", temp.timestamp.timeIntervalSince1970, temp.value.floatValue];
-                    NSArray *csv =[line componentsSeparatedByString:@","];
-                    NSString *time = [csv[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                    NSString *data = [csv[1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                    
-                    [self.chartData addObject:data];
-                    [self.timeData addObject:time];
-                    [self.chartData removeObjectAtIndex:0];
-                    [self.timeData removeObjectAtIndex:0];
-                    
-                    [handle writeData:[line dataUsingEncoding:NSUTF8StringEncoding]];
+                    [self.logData addObject:[[LogEntry alloc] initWithTemperature:temp.value timestamp:temp.timestamp]];
+                    if (self.logData.count > BarChartViewControllerNumBars) {
+                        [self.logData removeObjectAtIndex:0];
+                    }
+                    [NSKeyedArchiver archiveRootObject:self.logData toFile:self.logFilename];
                 }
-                [handle closeFile];
-                if (self.chartData.count) {
-                    [self.barChartView reloadData];
-                }
+                [self.barChartView reloadData];
                 self.progressBar.hidden = YES;
                 self.statusLabel.text = @"Logging...";
             }
@@ -210,24 +138,25 @@ NSInteger const BarChartViewControllerMinBarHeight = 0;
 
 - (IBAction)switchChanged:(id)sender
 {
-    if(self.demoSwitch.on)
-    {
-        [self initFakeData];
-        [self.barChartView reloadData];
+    if (self.demoSwitch.on) {
+        // Create some random data
+        self.logData = [NSMutableArray arrayWithCapacity:BarChartViewControllerNumBars];
+        for (int i = 0; i < BarChartViewControllerNumBars; i++) {
+            NSNumber *rand = [NSNumber numberWithFloat:MAX((BarChartViewControllerMinBarHeight), arc4random() % (BarChartViewControllerMaxBarHeight))];
+            NSDate *timestamp = [NSDate dateWithTimeIntervalSinceNow:i];
+            [self.logData addObject:[[LogEntry alloc] initWithTemperature:rand timestamp:timestamp]];
+        }
+    } else {
+        // Reload the real data
+        self.logData = [[NSKeyedUnarchiver unarchiveObjectWithFile:self.logFilename] mutableCopy];
     }
-    else
-    {
-        [self readLog];
-        [self refreshPressed:self];
-        [self.barChartView reloadData];
-    }
+    [self.barChartView reloadData];
 }
 
 - (IBAction)clearLogPressed:(id)sender
 {
     [[NSFileManager defaultManager] createFileAtPath:self.logFilename contents:nil attributes:nil];
-    [self.chartData removeAllObjects];
-    [self readLog];
+    [self.logData removeAllObjects];
     [self.barChartView reloadData];
 }
 
@@ -248,26 +177,23 @@ NSInteger const BarChartViewControllerMinBarHeight = 0;
 
 - (NSUInteger)numberOfBarsInBarChartView:(JBBarChartView *)barChartView
 {
+    // If there are not enough samples, then add zeros to the array until there are enough samples and give a warning message.
+    if (self.logData.count < BarChartViewControllerNumBars) {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Not enough samples, chart data will be limited." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+        int emptyEntries = BarChartViewControllerNumBars - (int)self.logData.count;
+        for (int i = 0; i < emptyEntries; i++){
+            [self.logData insertObject:[[LogEntry alloc] init] atIndex:0];
+        }
+    }
     return BarChartViewControllerNumBars;
 }
 
 - (void)barChartView:(JBBarChartView *)barChartView didSelectBarAtIndex:(NSUInteger)index touchPoint:(CGPoint)touchPoint
 {
-    NSString *temp = self.timeData[index];
-    if ([temp doubleValue] == 0) {
-        [self.informationView setTitleText:@"Not Enough Data"];
-    }
-    else {
-        NSDate *timestamp = [NSDate dateWithTimeIntervalSince1970:[temp doubleValue]];
-        NSString *dateString = [NSDateFormatter localizedStringFromDate:timestamp
-                                                             dateStyle:NSDateFormatterMediumStyle
-                                                             timeStyle:NSDateFormatterMediumStyle];
-        [self.informationView setTitleText:dateString];
-    }
-    NSNumber *valueNumber = [self.chartData objectAtIndex:index];
-    [self.informationView setValueText:[NSString stringWithFormat:StringLabelDegreesFahrenheit, [valueNumber intValue], StringLabelDegreeSymbol] unitText:nil];
+    LogEntry *entry = self.logData[index];
+    [self.informationView setTitleText:entry.titleText];
+    [self.informationView setValueText:entry.valueText unitText:nil];
     [self.informationView setHidden:NO animated:YES];
-    
 }
 
 - (void)didDeselectBarChartView:(JBBarChartView *)barChartView
@@ -279,7 +205,8 @@ NSInteger const BarChartViewControllerMinBarHeight = 0;
 
 - (CGFloat)barChartView:(JBBarChartView *)barChartView heightForBarViewAtIndex:(NSUInteger)index
 {
-    return [[self.chartData objectAtIndex:index] floatValue];
+    LogEntry *entry = self.logData[index];
+    return entry.temperature.floatValue;
 }
 
 - (UIColor *)barChartView:(JBBarChartView *)barChartView colorForBarViewAtIndex:(NSUInteger)index
