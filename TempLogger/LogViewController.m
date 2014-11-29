@@ -23,8 +23,10 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *demoSwitch;
+
 @property (nonatomic, strong) NSString *logFilename;
 @property (nonatomic, strong) NSMutableArray *logData;
+@property (nonatomic) BOOL doingReset;
 @end
 
 // Bar chart size and position constants
@@ -41,7 +43,7 @@ static const NSInteger  BarChartViewControllerMinBarHeight = 0;
     if (!_logFilename) {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         if (paths.count) {
-            _logFilename = [NSString stringWithFormat:@"%@/archive_logfile.txt", paths[0]];
+            _logFilename = [NSString stringWithFormat:@"%@/archive_logfile", paths[0]];
         } else {
             [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Cannot find documents directory, logging not supported" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
             _logFilename = nil;
@@ -121,9 +123,15 @@ static const NSInteger  BarChartViewControllerMinBarHeight = 0;
                     if (self.logData.count > BarChartViewControllerNumBars) {
                         [self.logData removeObjectAtIndex:0];
                     }
-                    [NSKeyedArchiver archiveRootObject:self.logData toFile:self.logFilename];
                 }
-                [self.barChartView reloadData];
+                [NSKeyedArchiver archiveRootObject:self.logData toFile:self.logFilename];
+                
+                if (!self.doingReset) {
+                    [self.barChartView reloadData];
+                } else {
+                    self.doingReset = NO;
+                    [self clearLogPressed:nil];
+                }
                 self.progressBar.hidden = YES;
                 self.statusLabel.text = @"Logging...";
             }
@@ -143,7 +151,7 @@ static const NSInteger  BarChartViewControllerMinBarHeight = 0;
         self.logData = [NSMutableArray arrayWithCapacity:BarChartViewControllerNumBars];
         for (int i = 0; i < BarChartViewControllerNumBars; i++) {
             NSNumber *rand = [NSNumber numberWithFloat:MAX((BarChartViewControllerMinBarHeight), arc4random() % (BarChartViewControllerMaxBarHeight))];
-            NSDate *timestamp = [NSDate dateWithTimeIntervalSinceNow:i];
+            NSDate *timestamp = [NSDate dateWithTimeIntervalSinceNow:(BarChartViewControllerNumBars - i) * -30];
             [self.logData addObject:[[LogEntry alloc] initWithTemperature:rand timestamp:timestamp]];
         }
     } else {
@@ -155,7 +163,7 @@ static const NSInteger  BarChartViewControllerMinBarHeight = 0;
 
 - (IBAction)clearLogPressed:(id)sender
 {
-    [[NSFileManager defaultManager] createFileAtPath:self.logFilename contents:nil attributes:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:self.logFilename error:nil];
     [self.logData removeAllObjects];
     [self.barChartView reloadData];
 }
@@ -163,15 +171,17 @@ static const NSInteger  BarChartViewControllerMinBarHeight = 0;
 - (IBAction)resetDevicePressed:(id)sender
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self.device resetDevice];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.device connectWithHandler:^(NSError *error) {
-            [self.device.temperature.dataReadyEvent downloadLogAndStopLogging:YES handler:^(NSArray *array, NSError *error) {
+    [self.device connectWithHandler:^(NSError *error) {
+        [self.device resetDevice];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.device connectWithHandler:^(NSError *error) {
                 [hud hide:YES];
+                self.doingReset = YES;
+                // Reprogram and refresh the data.
                 [self refreshPressed:nil];
-            } progressHandler:nil];
-        }];
-    });
+            }];
+        });
+    }];
 }
 
 
