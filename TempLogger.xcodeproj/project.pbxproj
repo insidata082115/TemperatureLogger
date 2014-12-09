@@ -31,7 +31,6 @@
 		D06E997D1A0B597E002B3672 /* icon-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D06E997B1A0B597E002B3672 /* icon-arrow.png */; };
 		D06E997E1A0B597E002B3672 /* icon-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D06E997C1A0B597E002B3672 /* icon-arrow@2x.png */; };
 		D079C4281A159A79001D6DDE /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D079C4271A159A79001D6DDE /* StartViewController.m */; };
-		D07BA17C1A0AD89F00C6CB14 /* BaseNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07BA17B1A0AD89F00C6CB14 /* BaseNavViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,8 +93,6 @@
 		D06E997C1A0B597E002B3672 /* icon-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-arrow@2x.png"; sourceTree = "<group>"; };
 		D079C4261A159A79001D6DDE /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		D079C4271A159A79001D6DDE /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
-		D07BA17A1A0AD89F00C6CB14 /* BaseNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavViewController.h; sourceTree = "<group>"; };
-		D07BA17B1A0AD89F00C6CB14 /* BaseNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +145,6 @@
 				40D29D1F1A270B430048729C /* LogEntry.m */,
 				406CCC0B19EF73E5007C0217 /* AppDelegate.h */,
 				406CCC0C19EF73E5007C0217 /* AppDelegate.m */,
-				D07BA17A1A0AD89F00C6CB14 /* BaseNavViewController.h */,
-				D07BA17B1A0AD89F00C6CB14 /* BaseNavViewController.m */,
 				406CCC3919F044A7007C0217 /* MainTableViewController.h */,
 				406CCC3A19F044A7007C0217 /* MainTableViewController.m */,
 				406CCC3C19F05A05007C0217 /* ScanTableViewController.h */,
@@ -347,7 +342,6 @@
 				405F000319F5FD9400FAEAFC /* MBProgressHUD.m in Sources */,
 				40D29D3F1A2790200048729C /* JBChartTooltipTipView.m in Sources */,
 				406CCC3B19F044A7007C0217 /* MainTableViewController.m in Sources */,
-				D07BA17C1A0AD89F00C6CB14 /* BaseNavViewController.m in Sources */,
 				40D29D3D1A2790200048729C /* JBChartHeaderView.m in Sources */,
 				40D29D3A1A2790200048729C /* JBBarChartView.m in Sources */,
 				406CCC3E19F05A05007C0217 /* ScanTableViewController.m in Sources */,

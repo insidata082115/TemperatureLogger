@@ -25,7 +25,6 @@
         self.devices = array;
         [self.tableView reloadData];
     }];
-    
 }
 
 - (void)viewDidLoad
@@ -37,7 +36,6 @@
     self.navigationController.navigationBar.translucent = TRUE;
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:ColorNavigationTitle,NSForegroundColorAttributeName, FontNavigationTitle, NSFontAttributeName, nil]];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -46,11 +44,6 @@
         LogViewController *controller = segue.destinationViewController;
         controller.device = sender;
     }
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - Table view data source
