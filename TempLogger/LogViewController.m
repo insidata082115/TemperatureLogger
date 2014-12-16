@@ -99,6 +99,7 @@ static const NSInteger  BarChartViewControllerMinBarHeight = 0;
         
         self.device.temperature.units = MBLTemperatureUnitFahrenheit;
         if (!self.device.temperature.dataReadyEvent.isLogging) {
+            NSLog(@"Programming Device");
             self.device.temperature.samplePeriod = 30000;
             self.device.temperature.source = MBLTemperatureSourceInternal;
             // Uncomment the following lines if you are using an external thermistor

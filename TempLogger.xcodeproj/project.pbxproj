@@ -16,8 +16,8 @@
 		406CCC3B19F044A7007C0217 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406CCC3A19F044A7007C0217 /* MainTableViewController.m */; };
 		406CCC3E19F05A05007C0217 /* ScanTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406CCC3D19F05A05007C0217 /* ScanTableViewController.m */; };
 		406CCC4C19F09DB6007C0217 /* LogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406CCC4B19F09DB6007C0217 /* LogViewController.m */; };
+		408CA8C81A400FB500AC578C /* MetaWear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 408CA8C71A400FB500AC578C /* MetaWear.framework */; };
 		40D29D201A270B430048729C /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D29D1F1A270B430048729C /* LogEntry.m */; };
-		40D29D231A271A820048729C /* MetaWear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D29D221A271A820048729C /* MetaWear.framework */; };
 		40D29D391A2790200048729C /* JBBarChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D29D261A2790200048729C /* JBBarChartFooterView.m */; };
 		40D29D3A1A2790200048729C /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D29D281A2790200048729C /* JBBarChartView.m */; };
 		40D29D3B1A2790200048729C /* JBBaseChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D29D2A1A2790200048729C /* JBBaseChartViewController.m */; };
@@ -62,9 +62,9 @@
 		406CCC3D19F05A05007C0217 /* ScanTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanTableViewController.m; sourceTree = "<group>"; };
 		406CCC4A19F09DB6007C0217 /* LogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogViewController.h; sourceTree = "<group>"; };
 		406CCC4B19F09DB6007C0217 /* LogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogViewController.m; sourceTree = "<group>"; };
+		408CA8C71A400FB500AC578C /* MetaWear.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MetaWear.framework; sourceTree = "<group>"; };
 		40D29D1E1A270B430048729C /* LogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogEntry.h; sourceTree = "<group>"; };
 		40D29D1F1A270B430048729C /* LogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogEntry.m; sourceTree = "<group>"; };
-		40D29D221A271A820048729C /* MetaWear.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MetaWear.framework; sourceTree = "<group>"; };
 		40D29D251A2790200048729C /* JBBarChartFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBBarChartFooterView.h; path = JBChartView/JBBarChartFooterView.h; sourceTree = SOURCE_ROOT; };
 		40D29D261A2790200048729C /* JBBarChartFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBBarChartFooterView.m; path = JBChartView/JBBarChartFooterView.m; sourceTree = SOURCE_ROOT; };
 		40D29D271A2790200048729C /* JBBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBBarChartView.h; path = JBChartView/JBBarChartView.h; sourceTree = SOURCE_ROOT; };
@@ -100,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40D29D231A271A820048729C /* MetaWear.framework in Frameworks */,
+				408CA8C81A400FB500AC578C /* MetaWear.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,7 +192,7 @@
 		406CCC2D19EF73F6007C0217 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				40D29D221A271A820048729C /* MetaWear.framework */,
+				408CA8C71A400FB500AC578C /* MetaWear.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
