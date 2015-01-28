@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		405F000319F5FD9400FAEAFC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 405F000219F5FD9400FAEAFC /* MBProgressHUD.m */; };
 		406CCC0A19EF73E5007C0217 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 406CCC0919EF73E5007C0217 /* main.m */; };
 		406CCC0D19EF73E5007C0217 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 406CCC0C19EF73E5007C0217 /* AppDelegate.m */; };
 		406CCC1319EF73E5007C0217 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 406CCC1119EF73E5007C0217 /* Main.storyboard */; };
@@ -16,7 +15,6 @@
 		406CCC3B19F044A7007C0217 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406CCC3A19F044A7007C0217 /* MainTableViewController.m */; };
 		406CCC3E19F05A05007C0217 /* ScanTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406CCC3D19F05A05007C0217 /* ScanTableViewController.m */; };
 		406CCC4C19F09DB6007C0217 /* LogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406CCC4B19F09DB6007C0217 /* LogViewController.m */; };
-		408CA8C81A400FB500AC578C /* MetaWear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 408CA8C71A400FB500AC578C /* MetaWear.framework */; };
 		40D29D201A270B430048729C /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D29D1F1A270B430048729C /* LogEntry.m */; };
 		40D29D391A2790200048729C /* JBBarChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D29D261A2790200048729C /* JBBarChartFooterView.m */; };
 		40D29D3A1A2790200048729C /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D29D281A2790200048729C /* JBBarChartView.m */; };
@@ -28,6 +26,7 @@
 		40D29D401A2790200048729C /* JBChartTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D29D341A2790200048729C /* JBChartTooltipView.m */; };
 		40D29D411A2790200048729C /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D29D361A2790200048729C /* JBChartView.m */; };
 		40D29D421A2790200048729C /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D29D381A2790200048729C /* JBLineChartView.m */; };
+		85A09D1CB01A032A3D4DF30A /* libPods-TempLogger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45574DD43E4D83C58F014373 /* libPods-TempLogger.a */; };
 		D06E997D1A0B597E002B3672 /* icon-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D06E997B1A0B597E002B3672 /* icon-arrow.png */; };
 		D06E997E1A0B597E002B3672 /* icon-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D06E997C1A0B597E002B3672 /* icon-arrow@2x.png */; };
 		D079C4281A159A79001D6DDE /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D079C4271A159A79001D6DDE /* StartViewController.m */; };
@@ -44,8 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		405F000119F5FD9400FAEAFC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
-		405F000219F5FD9400FAEAFC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		406CCC0419EF73E5007C0217 /* TempLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TempLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		406CCC0819EF73E5007C0217 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		406CCC0919EF73E5007C0217 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -62,7 +59,6 @@
 		406CCC3D19F05A05007C0217 /* ScanTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanTableViewController.m; sourceTree = "<group>"; };
 		406CCC4A19F09DB6007C0217 /* LogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogViewController.h; sourceTree = "<group>"; };
 		406CCC4B19F09DB6007C0217 /* LogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogViewController.m; sourceTree = "<group>"; };
-		408CA8C71A400FB500AC578C /* MetaWear.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MetaWear.framework; sourceTree = "<group>"; };
 		40D29D1E1A270B430048729C /* LogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogEntry.h; sourceTree = "<group>"; };
 		40D29D1F1A270B430048729C /* LogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogEntry.m; sourceTree = "<group>"; };
 		40D29D251A2790200048729C /* JBBarChartFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBBarChartFooterView.h; path = JBChartView/JBBarChartFooterView.h; sourceTree = SOURCE_ROOT; };
@@ -85,6 +81,8 @@
 		40D29D361A2790200048729C /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBChartView.m; path = JBChartView/JBChartView.m; sourceTree = SOURCE_ROOT; };
 		40D29D371A2790200048729C /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBLineChartView.h; path = JBChartView/JBLineChartView.h; sourceTree = SOURCE_ROOT; };
 		40D29D381A2790200048729C /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBLineChartView.m; path = JBChartView/JBLineChartView.m; sourceTree = SOURCE_ROOT; };
+		45574DD43E4D83C58F014373 /* libPods-TempLogger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TempLogger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77A4D6DE7CC57588734E2224 /* Pods-TempLogger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempLogger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TempLogger/Pods-TempLogger.debug.xcconfig"; sourceTree = "<group>"; };
 		D06E994A1A0AEE3C002B3672 /* ColorConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConstants.h; sourceTree = "<group>"; };
 		D06E994B1A0AF008002B3672 /* TempLoggerPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TempLoggerPrefixHeader.pch; sourceTree = "<group>"; };
 		D06E994C1A0AF65F002B3672 /* FontConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FontConstants.h; sourceTree = "<group>"; };
@@ -93,6 +91,7 @@
 		D06E997C1A0B597E002B3672 /* icon-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-arrow@2x.png"; sourceTree = "<group>"; };
 		D079C4261A159A79001D6DDE /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		D079C4271A159A79001D6DDE /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		DB3F54C2BCE8CACC1FAB6A90 /* Pods-TempLogger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempLogger.release.xcconfig"; path = "Pods/Target Support Files/Pods-TempLogger/Pods-TempLogger.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				408CA8C81A400FB500AC578C /* MetaWear.framework in Frameworks */,
+				85A09D1CB01A032A3D4DF30A /* libPods-TempLogger.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,15 +113,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38E48DE3A2C7B0C3E6FBD5C1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				77A4D6DE7CC57588734E2224 /* Pods-TempLogger.debug.xcconfig */,
+				DB3F54C2BCE8CACC1FAB6A90 /* Pods-TempLogger.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		406CCBFB19EF73E5007C0217 = {
 			isa = PBXGroup;
 			children = (
-				40F8002619F5B762000031CB /* MBProgressHUD */,
 				406CCC4D19F0AE55007C0217 /* JBChartView */,
 				406CCC0619EF73E5007C0217 /* TempLogger */,
 				406CCC2019EF73E5007C0217 /* TempLoggerTests */,
 				406CCC2D19EF73F6007C0217 /* Frameworks */,
 				406CCC0519EF73E5007C0217 /* Products */,
+				38E48DE3A2C7B0C3E6FBD5C1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,7 +200,7 @@
 		406CCC2D19EF73F6007C0217 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				408CA8C71A400FB500AC578C /* MetaWear.framework */,
+				45574DD43E4D83C58F014373 /* libPods-TempLogger.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -225,15 +233,6 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		40F8002619F5B762000031CB /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				405F000119F5FD9400FAEAFC /* MBProgressHUD.h */,
-				405F000219F5FD9400FAEAFC /* MBProgressHUD.m */,
-			);
-			name = MBProgressHUD;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -241,9 +240,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 406CCC2719EF73E5007C0217 /* Build configuration list for PBXNativeTarget "TempLogger" */;
 			buildPhases = (
+				8CF96D8011D8181A20FE61D5 /* Check Pods Manifest.lock */,
 				406CCC0019EF73E5007C0217 /* Sources */,
 				406CCC0119EF73E5007C0217 /* Frameworks */,
 				406CCC0219EF73E5007C0217 /* Resources */,
+				870B0ADF119C0235466D0077 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -283,7 +284,6 @@
 				TargetAttributes = {
 					406CCC0319EF73E5007C0217 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = V9V8S5TL85;
 					};
 					406CCC1C19EF73E5007C0217 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -331,6 +331,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		870B0ADF119C0235466D0077 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TempLogger/Pods-TempLogger-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CF96D8011D8181A20FE61D5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		406CCC0019EF73E5007C0217 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -339,7 +372,6 @@
 				40D29D3E1A2790200048729C /* JBChartInformationView.m in Sources */,
 				40D29D411A2790200048729C /* JBChartView.m in Sources */,
 				40D29D391A2790200048729C /* JBBarChartFooterView.m in Sources */,
-				405F000319F5FD9400FAEAFC /* MBProgressHUD.m in Sources */,
 				40D29D3F1A2790200048729C /* JBChartTooltipTipView.m in Sources */,
 				406CCC3B19F044A7007C0217 /* MainTableViewController.m in Sources */,
 				40D29D3D1A2790200048729C /* JBChartHeaderView.m in Sources */,
@@ -465,6 +497,7 @@
 		};
 		406CCC2819EF73E5007C0217 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77A4D6DE7CC57588734E2224 /* Pods-TempLogger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -477,7 +510,7 @@
 				INFOPLIST_FILE = TempLogger/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -486,6 +519,7 @@
 		};
 		406CCC2919EF73E5007C0217 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB3F54C2BCE8CACC1FAB6A90 /* Pods-TempLogger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
