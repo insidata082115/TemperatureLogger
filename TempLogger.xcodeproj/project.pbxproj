@@ -26,6 +26,7 @@
 		40D29D401A2790200048729C /* JBChartTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D29D341A2790200048729C /* JBChartTooltipView.m */; };
 		40D29D411A2790200048729C /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D29D361A2790200048729C /* JBChartView.m */; };
 		40D29D421A2790200048729C /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D29D381A2790200048729C /* JBLineChartView.m */; };
+		40D303BF1A81AE120072B487 /* DeviceConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D303BE1A81AE120072B487 /* DeviceConfiguration.m */; };
 		85A09D1CB01A032A3D4DF30A /* libPods-TempLogger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45574DD43E4D83C58F014373 /* libPods-TempLogger.a */; };
 		D06E997D1A0B597E002B3672 /* icon-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D06E997B1A0B597E002B3672 /* icon-arrow.png */; };
 		D06E997E1A0B597E002B3672 /* icon-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D06E997C1A0B597E002B3672 /* icon-arrow@2x.png */; };
@@ -81,6 +82,8 @@
 		40D29D361A2790200048729C /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBChartView.m; path = JBChartView/JBChartView.m; sourceTree = SOURCE_ROOT; };
 		40D29D371A2790200048729C /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBLineChartView.h; path = JBChartView/JBLineChartView.h; sourceTree = SOURCE_ROOT; };
 		40D29D381A2790200048729C /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBLineChartView.m; path = JBChartView/JBLineChartView.m; sourceTree = SOURCE_ROOT; };
+		40D303BD1A81AE120072B487 /* DeviceConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceConfiguration.h; sourceTree = "<group>"; };
+		40D303BE1A81AE120072B487 /* DeviceConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceConfiguration.m; sourceTree = "<group>"; };
 		45574DD43E4D83C58F014373 /* libPods-TempLogger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TempLogger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77A4D6DE7CC57588734E2224 /* Pods-TempLogger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TempLogger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TempLogger/Pods-TempLogger.debug.xcconfig"; sourceTree = "<group>"; };
 		D06E994A1A0AEE3C002B3672 /* ColorConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConstants.h; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				D06E99711A0B50D2002B3672 /* StringConstants.h */,
 				40D29D1E1A270B430048729C /* LogEntry.h */,
 				40D29D1F1A270B430048729C /* LogEntry.m */,
+				40D303BD1A81AE120072B487 /* DeviceConfiguration.h */,
+				40D303BE1A81AE120072B487 /* DeviceConfiguration.m */,
 				406CCC0B19EF73E5007C0217 /* AppDelegate.h */,
 				406CCC0C19EF73E5007C0217 /* AppDelegate.m */,
 				406CCC3919F044A7007C0217 /* MainTableViewController.h */,
@@ -385,6 +390,7 @@
 				406CCC0A19EF73E5007C0217 /* main.m in Sources */,
 				406CCC4C19F09DB6007C0217 /* LogViewController.m in Sources */,
 				40D29D3C1A2790200048729C /* JBBaseViewController.m in Sources */,
+				40D303BF1A81AE120072B487 /* DeviceConfiguration.m in Sources */,
 				D079C4281A159A79001D6DDE /* StartViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

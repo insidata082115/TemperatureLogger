@@ -26,7 +26,6 @@
 
 @property (nonatomic, strong) NSString *logFilename;
 @property (nonatomic, strong) NSMutableArray *logData;
-@property (nonatomic) BOOL doingReset;
 @end
 
 // Bar chart size and position constants
@@ -97,19 +96,6 @@ static const NSInteger  BarChartViewControllerMinBarHeight = 0;
             return;
         }
         
-        self.device.temperature.units = MBLTemperatureUnitFahrenheit;
-        if (!self.device.temperature.dataReadyEvent.isLogging) {
-            NSLog(@"Programming Device");
-            self.device.temperature.samplePeriod = 30000;
-            self.device.temperature.source = MBLTemperatureSourceInternal;
-            // Uncomment the following lines if you are using an external thermistor
-            // as setup here: http://projects.mbientlab.com/metawear-and-thermistor/
-            //self.device.temperature.source = MBLTemperatureSourceThermistor;
-            //self.device.temperature.thermistorReadPin = 0;
-            //self.device.temperature.thermistorEnablePin = 1;
-            [self.device.temperature.dataReadyEvent startLogging];
-        }
-        
         self.progressBar.hidden = NO;
         self.progressBar.progress = 0;
         self.statusLabel.text = @"Syncing...";
@@ -126,13 +112,8 @@ static const NSInteger  BarChartViewControllerMinBarHeight = 0;
                     }
                 }
                 [NSKeyedArchiver archiveRootObject:self.logData toFile:self.logFilename];
-                
-                if (!self.doingReset) {
-                    [self.barChartView reloadData];
-                } else {
-                    self.doingReset = NO;
-                    [self clearLogPressed:nil];
-                }
+                [self.barChartView reloadData];
+        
                 self.progressBar.hidden = YES;
                 self.statusLabel.text = @"Logging...";
             }
@@ -148,6 +129,8 @@ static const NSInteger  BarChartViewControllerMinBarHeight = 0;
 - (IBAction)switchChanged:(id)sender
 {
     if (self.demoSwitch.on) {
+        // Save the real data
+        [NSKeyedArchiver archiveRootObject:self.logData toFile:self.logFilename];
         // Create some random data
         self.logData = [NSMutableArray arrayWithCapacity:BarChartViewControllerNumBars];
         for (int i = 0; i < BarChartViewControllerNumBars; i++) {
@@ -171,17 +154,18 @@ static const NSInteger  BarChartViewControllerMinBarHeight = 0;
 
 - (IBAction)resetDevicePressed:(id)sender
 {
+    if (!self.device) {
+        return;
+    }
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self.device connectWithHandler:^(NSError *error) {
-        [self.device resetDevice];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.device connectWithHandler:^(NSError *error) {
+    MBLMetaWear *device = self.device;
+    [device connectWithHandler:^(NSError *error) {
+        [device setConfiguration:device.configuration handler:^(NSError *error) {
+            [device disconnectWithHandler:^(NSError *error) {
                 [hud hide:YES];
-                self.doingReset = YES;
-                // Reprogram and refresh the data.
-                [self refreshPressed:nil];
             }];
-        });
+        }];
     }];
 }
 
