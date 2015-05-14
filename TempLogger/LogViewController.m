@@ -8,6 +8,7 @@
 
 #import "LogViewController.h"
 #import "LogEntry.h"
+#import "DeviceConfiguration.h"
 
 #import "JBLineChartView.h"
 #import "JBBarChartView.h"
@@ -100,7 +101,8 @@ static const NSInteger  BarChartViewControllerMinBarHeight = 0;
         self.progressBar.progress = 0;
         self.statusLabel.text = @"Syncing...";
         
-        [self.device.temperature.dataReadyEvent downloadLogAndStopLogging:NO handler:^(NSArray *array, NSError *error) {
+        DeviceConfiguration *configuration = self.device.configuration;
+        [configuration.periodicTemperature downloadLogAndStopLogging:NO handler:^(NSArray *array, NSError *error) {
             if (error) {
                 [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
             } else {
@@ -161,8 +163,20 @@ static const NSInteger  BarChartViewControllerMinBarHeight = 0;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     MBLMetaWear *device = self.device;
     [device connectWithHandler:^(NSError *error) {
+        if (error) {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+            return;
+        }
         [device setConfiguration:device.configuration handler:^(NSError *error) {
+            if (error) {
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+                return;
+            }
             [device disconnectWithHandler:^(NSError *error) {
+                if (error) {
+                    [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+                    return;
+                }
                 [hud hide:YES];
             }];
         }];

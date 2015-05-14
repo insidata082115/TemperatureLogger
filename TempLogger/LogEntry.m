@@ -64,7 +64,11 @@
 
 - (NSString *)valueText
 {
-    return [NSString stringWithFormat:StringLabelDegreesFahrenheit, self.temperature.intValue, StringLabelDegreeSymbol];
+    if (!self.temperature) {
+        return @"--°F";
+    } else {
+        return [NSString stringWithFormat:StringLabelDegreesFahrenheit, (int)(self.temperature.floatValue * 1.8) + 32, StringLabelDegreeSymbol];
+    }
 }
 
 
