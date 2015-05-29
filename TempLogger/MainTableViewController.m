@@ -10,6 +10,7 @@
 #import "LogViewController.h"
 #import <MetaWear/MetaWear.h>
 #import "ColorConstants.h"
+#import "StringConstants.h"
 
 @interface MainTableViewController ()
 @property (nonatomic, strong) NSArray *devices;
