@@ -26,13 +26,18 @@
 
 - (void)runOnDeviceBoot:(MBLMetaWear *)device
 {
-    device.temperature.source = MBLTemperatureSourceInternal;
-    // Uncomment the following lines if you are using an external thermistor
-    // as setup here: http://projects.mbientlab.com/metawear-and-thermistor/
-    //self.device.temperature.source = MBLTemperatureSourceThermistor;
-    //self.device.temperature.thermistorReadPin = 0;
-    //self.device.temperature.thermistorEnablePin = 1;
-    self.periodicTemperature = [device.temperature.temperatureValue periodicReadWithPeriod:30000];
+    // The following lines show how to setup an external thermistor
+    //MBLExternalThermistor *thermistor = device.temperature.externalThermistor;
+    //thermistor.readPin = 0;
+    //thermistor.enablePin = 1;
+    
+    // The internal temperature will always be available
+    MBLData *temperature = device.temperature.internal;
+    if (device.temperature.onboardThermistor) {
+        // Use the more accurate thermistor if available
+        temperature = device.temperature.onboardThermistor;
+    }
+    self.periodicTemperature = [temperature periodicReadWithPeriod:30000];
     [self.periodicTemperature startLogging];
 }
 
